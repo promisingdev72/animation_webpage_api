@@ -4,16 +4,16 @@ exports.sendEmail = (req, res) => {
   const { name, email, message } = req.body;
 
   const transporter = nodemailer.createTransport({
-   host: "smtpout.secureserver.net",
-   port: 465,
-   secure:true,
-   auth: {
-     user: "nermine.makrem@alitheia-studios.ch",
-     pass: "Integrity11!"
-   },
-   tls:{
-    rejectUnauthorized:false
-   }
+    host: "smtpout.secureserver.net",
+    port: 465,
+    secure: true,
+    auth: {
+      user: "nermine.makrem@alitheia-studios.ch",
+      pass: "Integrity11!",
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
   });
 
   const messageHtml = `<div>Hello,Lithia</div><div>Message from ${name} (Email: ${email})</div><div>${message}</div>`;
@@ -22,16 +22,16 @@ exports.sendEmail = (req, res) => {
     from: "nermine.makrem@alitheia-studios.ch",
     to: "nermine.makrem@alitheia-studios.ch,promising.dev72@gmail.com",
     subject: "Sending Email From Nermine",
-    html: messageHtml
+    html: messageHtml,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
-      res.status(500).send({'sent':false})
+      res.status(500).send({ sent: false });
     } else {
       console.log("Email sent: " + info.response);
-      res.status(200).send({'sent':true})
+      res.status(200).send({ sent: true });
     }
   });
 };
