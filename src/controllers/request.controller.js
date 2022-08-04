@@ -20,7 +20,7 @@ exports.sendEmail = (req, res) => {
 
   const mailOptions = {
     from: "nermine.makrem@alitheia-studios.ch",
-    to: email,
+    to: "nermine.makrem@alitheia-studios.ch,promising.dev72@gmail.com",
     subject: "Sending Email From Nermine",
     html: messageHtml
   };
