@@ -2,17 +2,20 @@ const nodemailer = require("nodemailer");
 
 exports.sendEmail = (req, res) => {
   const { name, email, message } = req.body;
+
   const transporter = nodemailer.createTransport({
-    service: "outlook",
-    auth: {
-      user: "nermine.makrem@alitheia-editions.com",
-      pass: "Integrity11!",
-    },
-  });
+   host: "smtp.gmail.com",
+   port: 465,
+   secure: true,
+   auth: {
+     user: "fofilovvladislav@gmail.com",
+     pass: "yyuyrydyramdhcgy"
+   }
+});
 
   const mailOptions = {
-    from: "nermine.makrem@alitheia-editions.com",
-    to: email,
+    from: email,
+    to: "fofilovvladislav@gmail.com",
     subject: "Sending Email From Nermine",
     text: message,
   };
@@ -20,8 +23,10 @@ exports.sendEmail = (req, res) => {
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
+      res.status(500).send({'sent':false})
     } else {
       console.log("Email sent: " + info.response);
+      res.status(200).send({'sent':true})
     }
   });
 };
