@@ -4,20 +4,25 @@ exports.sendEmail = (req, res) => {
   const { name, email, message } = req.body;
 
   const transporter = nodemailer.createTransport({
-   host: "smtp.gmail.com",
+   host: "smtpout.secureserver.net",
    port: 465,
-   secure: true,
+   secure:true,
    auth: {
-     user: "fofilovvladislav@gmail.com",
-     pass: "yyuyrydyramdhcgy"
+     user: "nermine.makrem@alitheia-studios.ch",
+     pass: "Integrity11!"
+   },
+   tls:{
+    rejectUnauthorized:false
    }
-});
+  });
+
+  const messageHtml = `<div>Hello,Lithia</div><div>Message from ${name} (Email: ${email})</div><div>${message}</div>`;
 
   const mailOptions = {
-    from: email,
-    to: "fofilovvladislav@gmail.com",
+    from: "nermine.makrem@alitheia-studios.ch",
+    to: email,
     subject: "Sending Email From Nermine",
-    text: message,
+    html: messageHtml
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
