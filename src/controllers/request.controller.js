@@ -20,7 +20,7 @@ exports.sendEmail = (req, res) => {
 
   const mailOptions = {
     from: "nermine.makrem@alitheia-studios.ch",
-    to: "nermine.makrem@alitheia-studios.ch,promising.dev72@gmail.com",
+    to: "nermine.makrem@alitheia-studios.ch",
     subject: "Sending Email From Nermine",
     html: messageHtml,
   };
@@ -28,7 +28,7 @@ exports.sendEmail = (req, res) => {
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
-      res.status(500).send({ sent: false });
+      res.status(500).send({ sent: false, error: error });
     } else {
       console.log("Email sent: " + info.response);
       res.status(200).send({ sent: true });
