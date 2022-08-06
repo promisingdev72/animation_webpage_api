@@ -31,7 +31,7 @@ exports.sendEmail = (req, res) => {
       res.status(500).send({ sent: false, error: error });
     } else {
       console.log("Email sent: " + info.response);
-      res.status(200).send({ sent: true });
+      res.status(200).send({ sent: true, result: info.response });
     }
   });
 };
