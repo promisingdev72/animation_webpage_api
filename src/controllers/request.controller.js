@@ -16,7 +16,7 @@ exports.sendEmail = (req, res) => {
     },
   });
 
-  const messageHtml = `<div>Hello,Lithia</div><div>Message from ${name} (Email: ${email})</div><div>${message}</div>`;
+  const messageHtml = `<div>This is a request sent from the website alitheia-studios.ch</div><br/><div>${message}</div><br/><div>This is ${name} sending a request from alitheia-studios.ch</div>`;
 
   const mailOptions = {
     from: "nermine.makrem@alitheia-studios.ch",
